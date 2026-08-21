@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Simple Notebook — Research Workspace</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">S</span><span>Simple Notebook</span></div>
+      <button class="new-note" id="newNote">＋ New note <kbd>Ctrl N</kbd></button>
+      <button class="search-trigger" id="searchTrigger">⌕ <span>Search notes & web</span><kbd>Ctrl K</kbd></button>
+      <nav aria-label="Workspace">
+        <button class="nav-item active" data-view="recent">◷ <span>Recent</span></button>
+        <button class="nav-item" data-view="favorites">☆ <span>Favorites</span></button>
+        <button class="nav-item" data-view="all">□ <span>All notes</span></button>
+        <button class="nav-item" data-view="research">⌁ <span>Web research</span></button>
+        <button class="nav-item" data-view="trash">⌫ <span>Trash</span></button>
+      </nav>
+      <div class="sidebar-footer"><button id="themeToggle">◐ <span>Theme</span></button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><span>›</span><strong id="crumb">Research</strong></div>
+        <div class="top-actions"><span class="save-status" id="saveStatus">Saved</span><button id="focusMode" title="Focus mode">Focus</button></div>
+      </header>
+
+      <section class="workspace">
+        <div class="note-list" id="noteList"></div>
+        <article class="editor-panel">
+          <div class="editor-head">
+            <input id="noteTitle" value="Research workspace" aria-label="Note title" />
+            <div class="editor-actions"><button id="favoriteBtn" aria-label="Favorite">☆</button><button id="previewBtn">Preview</button></div>
+          </div>
+          <div class="editor-meta"><span id="noteMeta">Updated just now</span><span id="stats">0 words · 0 chars</span></div>
+          <textarea id="editor" spellcheck="true" aria-label="Note editor"># Research workspace
+
+Use **Ctrl/Cmd + K** to search notes and the web.
+
+Save useful web results directly into your research notes.</textarea>
+        </article>
+        <section class="research-panel" id="researchPanel" aria-label="Web research">
+          <div class="panel-head"><div><span class="eyebrow">WEB RESEARCH</span><h2>Search the web</h2></div><button id="closeResearch">×</button></div>
+          <div class="web-search"><input id="webQuery" placeholder="Search the web…" /><button id="webSearchBtn">Search</button></div>
+          <div class="scope"><button class="scope-btn active">Web</button><button class="scope-btn">News</button><button class="scope-btn">Docs</button><button class="scope-btn">GitHub</button></div>
+          <div id="webResults" class="results"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="palette-backdrop hidden" id="paletteBackdrop">
+    <section class="command-palette" role="dialog" aria-modal="true" aria-label="Command Palette">
+      <div class="palette-input"><span>⌕</span><input id="paletteInput" autocomplete="off" placeholder="Search notes, actions, or web…" /><kbd>Esc</kbd></div>
+      <div class="palette-tabs"><button class="palette-tab active" data-scope="all">All</button><button class="palette-tab" data-scope="notes">Notes</button><button class="palette-tab" data-scope="web">Web</button></div>
+      <div id="paletteResults" class="palette-results"></div>
+      <div class="palette-footer"><span>↑↓ Navigate</span><span>Enter Open</span><span>Esc Close</span></div>
+    </section>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
